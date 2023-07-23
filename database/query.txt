@@ -1,0 +1,65 @@
+crm_google_form_list
+CREATE TABLE `crm_google_form_list` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(100) NOT NULL,
+ `url` varchar(256) NOT NULL,
+ `active` tinyint(4) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+crm_merchant_search
+CREATE TABLE `crm_merchant_search` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(100) NOT NULL,
+ `phone` varchar(12) NOT NULL,
+ `created_on` datetime NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+crm_queries
+CREATE TABLE `crm_queries` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(100) NOT NULL,
+ `phone` varchar(12) NOT NULL,
+ `merchant_id` int(11) NOT NULL,
+ `status_id` int(11) NOT NULL,
+ `sub_status_id` int(11) NOT NULL,
+ `issue_date_from` date NOT NULL,
+ `issue_date_to` date NOT NULL,
+ `utr_upi` varchar(30) NOT NULL,
+ `is_sms_delivery` tinyint(4) NOT NULL,
+ `google_form_id` smallint(6) NOT NULL,
+ `is_callback_issue_resolved` tinyint(4) NOT NULL,
+ `callback_issue_resolved_date` datetime NOT NULL,
+ `is_mark_callback` tinyint(4) NOT NULL,
+ `notify_team` smallint(6) NOT NULL,
+ `remarks` text NOT NULL,
+ `created_on` datetime NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+crm_rc_status
+CREATE TABLE `crm_rc_status` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `status_name` varchar(20) NOT NULL,
+ `active` tinyint(4) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+crm_rc_sub_status
+CREATE TABLE `crm_rc_sub_status` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `status_id` int(11) NOT NULL,
+ `sub_status_name` varchar(100) NOT NULL,
+ `description` text NOT NULL,
+ `active` tinyint(4) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+crm_role
+CREATE TABLE `crm_role` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `actor` varchar(100) NOT NULL,
+ `status` tinyint(4) NOT NULL COMMENT '0->inactive, 1-> active',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
